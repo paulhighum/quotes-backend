@@ -1,0 +1,27 @@
+{
+  "name": "quotes-backend",
+  "version": "1.0.0",
+  "description": "backend for quotes project for tower app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulhighum/quotes-backend.git"
+  },
+  "author": "Paul Highum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paulhighum/quotes-backend/issues"
+  },
+  "homepage": "https://github.com/paulhighum/quotes-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "knex": "^0.14.4",
+    "pg": "^7.4.1"
+  }
+}
