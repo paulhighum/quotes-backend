@@ -7,7 +7,7 @@ const queries = require("./queries")
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get("/", (req, res, next) => {
+app.get("/all", (req, res, next) => {
   queries
     .quoteWithComments()
     .then(quotes => {
