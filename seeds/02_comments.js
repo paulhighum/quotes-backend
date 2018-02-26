@@ -1,13 +1,32 @@
-
-exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+exports.seed = function(knex, Promise){
+  return knex("comments")
+    .del()
+    .then(function(){
+      return knex("comments").insert([
+        {
+          id: 1,
+          quote_id: 1,
+          comment: "How inspirational!",
+          name: "Balthazar"
+        },
+        {
+          id: 2,
+          quote_id: 2,
+          comment: "Beautiful!",
+          name: "Balthazar"
+        },
+        {
+          id: 3,
+          quote_id: 4,
+          comment: "Moving!",
+          name: "Balthazar"
+        },
+        {
+          id: 4,
+          quote_id: 3,
+          comment: "Reminds me to be appreciative!",
+          name: "Balthazar"
+        },
+      ])
+    })
+}

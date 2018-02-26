@@ -3,9 +3,10 @@ exports.up = function(knex, Promise){
     table.increments("id").primary()
     table.integer("quote_id").references("quotes.id")
     table.text("comment")
+    table.text("name")
   })
 }
 
 exports.down = function(knex, Promise){
-  return knex.schema.deleteTableIfExists("comments")
+  return knex.schema.dropTableIfExists("comments")
 }
