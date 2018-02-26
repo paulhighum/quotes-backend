@@ -7,11 +7,101 @@ const queries = require("./queries")
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get("/", (request, response, next) => {
+app.get("/", (req, res, next) => {
   queries
     .quoteWithComments()
     .then(quotes => {
-      response.json({ quotes })
+      res.json({ quotes })
+    })
+    .catch(next)
+})
+
+app.get("/quotes", (req, res, next) => {
+  queries
+    .list("quotes")
+    .then(quotes => {
+      res.json({ quotes })
+    })
+    .catch(next)
+})
+
+app.get("/comments", (req, res, next) => {
+  queries
+    .list("comments")
+    .then(comments => {
+      res.json({ comments })
+    })
+    .catch(next)
+})
+
+app.get("/quotes/:id", (req, res, next) => {
+  queries
+    .read(req.params.id, "quotes")
+    .then(quotes => {
+      quotes ? res.json({ quotes }) : res.sendStatus(404)
+    })
+    .catch(next)
+})
+
+app.get("/comments/:id", (req, res, next) => {
+  queries
+    .read(req.params.id, "comments")
+    .then(comments => {
+      comments ? res.json({ comments }) : res.sendStatus(404)
+    })
+    .catch(next)
+})
+
+app.post("/quotes", (req, res, next) => {
+  queries
+    .create(req.body, "quotes")
+    .then(quotes => {
+      res.status(201).json({ quotes })
+    })
+    .catch(next)
+})
+
+app.post("/comments", (req, res, next) => {
+  queries
+    .create(req.body, "comments")
+    .then(comments => {
+      res.status(201).json({ comments })
+    })
+    .catch(next)
+})
+
+app.put("/quotes/:id", (req, res, next) => {
+  queries
+    .update(req.body, req.params.id, "quotes")
+    .then(quotes => {
+      res.json({ quotes })
+    })
+    .catch(next)
+})
+
+app.put("/comments/:id", (req, res, next) => {
+  queries
+    .update(req.body, req.params.id, "comments")
+    .then(comments => {
+      res.json({ comments })
+    })
+    .catch(next)
+})
+
+app.delete("/quotes/:id", (req, res, next) => {
+  queries
+    .delete(req.params.id, "quotes")
+    .then(() => {
+      res.sendStatus(204)
+    })
+    .catch(next)
+})
+
+app.delete("/comments/:id", (req, res, next) => {
+  queries
+    .delete(req.params.id, "comments")
+    .then(() => {
+      res.sendStatus(204)
     })
     .catch(next)
 })

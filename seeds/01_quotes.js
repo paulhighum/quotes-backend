@@ -29,4 +29,7 @@ exports.seed = function(knex, Promise){
         }
       ])
     })
+    .then(() => {
+      return knex.raw("ALTER SEQUENCE quotes_id_seq RESTART WITH 5;")
+    })
 }
